@@ -1,0 +1,26 @@
+@model TodoApp.Models.TodoItem
+
+@{
+    ViewData["Title"] = "Add Todo";
+}
+
+<div class="row">
+    <div class="col-8 offset-2">
+
+        <h1 class="text-center">@ViewData["Title"]</h1>
+
+        <div class="row mt-5">
+            <form class="col" asp-action="Create" method="post">
+                <label class="form-label">Title :</label>
+                <input class="form-control" asp-for="Title" />
+                <br />
+                <span asp-validation-for="Title" class="text-warning text-center"></span>
+
+                <button class="btn btn-sm btn-success" type="submit">Add</button>
+            </form>
+        </div>
+
+        <a class="btn btn-sm btn-warning mt-3" href="/Todo">Back</a>
+
+    </div>
+</div>

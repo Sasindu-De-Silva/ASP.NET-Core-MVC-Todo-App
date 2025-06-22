@@ -1,0 +1,47 @@
+@model List<TodoApp.Models.TodoItem>
+
+@{
+    ViewData["Title"] = "Todo List";
+}
+
+<div class="row">
+    <div class="col-8 offset-2">
+
+        <h1 class="text-center">@ViewData["Title"]</h1>
+
+        <a class="btn btn-sm btn-success" href="/Todo/Create">Add Todo</a>
+
+        <table class="table table-striped mt-3">
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>
+                        @if (item.IsCompleted)
+                        {
+                            <label class="bg-success px-2 py-1 rounded-1">
+                                <span class="text-white">Completed</span>
+                            </label>
+                        }
+                        else
+                        {
+                            <label class="bg-danger px-2 py-1 rounded-1">
+                                <span class="text-white">Pending</span>
+                            </label>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" href="/Todo/Toggle/@item.Id">Toggle</a>
+                        <a class="btn btn-sm btn-danger" href="/Todo/Delete/@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>
